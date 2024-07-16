@@ -13,11 +13,11 @@ export default function Navigationbar() {
           <Navbar.Brand href="/">Sworld</Navbar.Brand>
           <Searchbar/>
           <Nav className="me-auto">
-            <Nav.Link href="New">Home</Nav.Link>
-            <Nav.Link href="Men">Product</Nav.Link>
-            <Nav.Link href="Women">Details</Nav.Link>
-            <Nav.Link href="Accessories">Account</Nav.Link>
-            <Nav.Link href="Outlet">About</Nav.Link>
+            <Nav.Link href="home">Home</Nav.Link>
+            <Nav.Link href="product">Product</Nav.Link>
+            <Nav.Link href="details">Details</Nav.Link>
+            <Nav.Link href="account">Account</Nav.Link>
+            <Nav.Link href="about">About</Nav.Link>
           </Nav>
         </Container>
       </Navbar>
