@@ -10,7 +10,13 @@ const generateToken = user => {
 };
 
 const register = async (req, res) => {
-  const { email, password, name, role, id } = req.body;
+  const {username,role,
+    email,
+    password,
+    address,
+    country,
+    phoneNumber,
+    postalCode } = req.body;
 
   try {
     let user = null;
@@ -27,7 +33,11 @@ const register = async (req, res) => {
     const salt = await bcrypt.genSalt(10);
     const hashPassword = await bcrypt.hash(password, salt);
 
-    const userData = { name, email, password: hashPassword, role, id };
+    const userData = {  email, password: hashPassword, role, username,
+      address,
+      country,
+      phoneNumber,
+      postalCode };
     
     if (role === 'viewer') {
       user = new User(userData);

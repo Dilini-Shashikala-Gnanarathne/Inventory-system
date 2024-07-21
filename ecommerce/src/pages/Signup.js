@@ -1,7 +1,9 @@
 import { useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
-import './Signup.css'
+import Axios from 'axios';
+import './Signup.css';
+
 function SignupForm() {
   const [formData, setFormData] = useState({
     username: '',
@@ -10,20 +12,45 @@ function SignupForm() {
     address: '',
     country: '',
     phoneNumber: '',
-    postalCode: ''
+    postalCode: '',
+    role: 'viewer',
   });
+
+  const [error, setError] = useState(null);
 
   const handleChange = (e) => {
     const { id, value } = e.target;
-    setFormData(prevState => ({
+    setFormData((prevState) => ({
       ...prevState,
-      [id]: value
+      [id]: value,
     }));
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(formData); 
+    if (formData.role !== 'admin' && formData.role !== 'viewer') {
+      setError('Role must be either admin or viewer');
+      return;
+    }
+    addUser(formData);
+  };
+
+  const addUser = (data) => {
+    Axios.post('http://localhost:3001/api/createUser', data)
+      .then(() => {
+        resetForm();
+        setError(null);
+      })
+      .catch((error) => {
+        if (error.response && error.response.status === 400) {
+          setError(error.response.data.error);
+        } else {
+          setError('An unexpected error occurred');
+        }
+      });
+  };
+
+  const resetForm = () => {
     setFormData({
       username: '',
       email: '',
@@ -31,7 +58,8 @@ function SignupForm() {
       address: '',
       country: '',
       phoneNumber: '',
-      postalCode: ''
+      postalCode: '',
+      role: 'viewer',
     });
   };
 
@@ -104,6 +132,20 @@ function SignupForm() {
             onChange={handleChange}
           />
         </Form.Group>
+        
+        <Form.Group controlId="role">
+          <Form.Label>You Are</Form.Label>
+          <Form.Control
+            type="text"
+            placeholder="Admin or viewer"
+            value={formData.role}
+            onChange={handleChange}
+            required
+          />
+        </Form.Group>
+        
+        {error && <p className="error-text">{error}</p>}
+        
         <Button variant="primary" type="submit">
           Sign Up
         </Button>
