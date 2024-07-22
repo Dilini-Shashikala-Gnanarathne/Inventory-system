@@ -1,4 +1,5 @@
 import React from 'react';
+
 import H1Image from './Pictures/H1.jpg'
 const About = () => {
   return (
@@ -146,6 +147,7 @@ const About = () => {
           </div>
         </div>
       </div>
+      
     </div>
   );
 };
