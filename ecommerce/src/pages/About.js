@@ -15,6 +15,7 @@ const About = () => {
                 <div className="col-md-4 col-sm-6 col-xs-12 about-col">
                   <div className="about-image">
                     <img
+                    
                       src={H1Image}
                       alt="UrbanMart"
                       className="about-img wow fadeIn"
