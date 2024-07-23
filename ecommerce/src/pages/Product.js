@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './Product.css';
 import Image1 from './Pictures/1.jpg';
 import Image2 from './Pictures/2.jpg';
@@ -103,7 +103,7 @@ const categories = [
   },
 ];
 
-const Category = ({ sectionId, sectionTitle, items }) => (
+const Category = ({ sectionId, sectionTitle, items, cartItems, addToCart, removeFromCart }) => (
   <div>
     <h2 className="title"><a name={sectionId}></a>{sectionTitle}</h2>
     <div className="row">
@@ -114,7 +114,18 @@ const Category = ({ sectionId, sectionTitle, items }) => (
             <div className="list">
               <img src={item.imgSrc} className="offer-img" alt={item.title} />
               <br />{item.description}<br />{item.price}
-              <a href="Details.html" className="button">More Details &#8594;</a>
+              {cartItems.some(cartItem => cartItem.id === item.id) ? (
+                <button
+                  className="btn btn-danger"
+                  onClick={() => removeFromCart(item.id)}
+                >
+                  Remove from Cart
+                </button>
+              ) : (
+                <button className="btn btn-danger" onClick={() => addToCart(item.id)}>
+                  Add to Cart
+                </button>
+              )}
             </div>
           </div>
         </div>
@@ -125,6 +136,19 @@ const Category = ({ sectionId, sectionTitle, items }) => (
 );
 
 const Product = () => {
+  const [cartItems, setCartItems] = useState([]);
+
+  const addToCart = (id) => {
+    const product = categories.flatMap(category => category.items).find(item => item.id === id);
+    setCartItems((prevCartItems) => [...prevCartItems, product]);
+  };
+
+  const removeFromCart = (id) => {
+    setCartItems((prevCartItems) =>
+      prevCartItems.filter((item) => item.id !== id)
+    );
+  };
+
   return (
     <div className="small-container">
       <h2 className="title">ALL CATEGORIES</h2>
@@ -148,8 +172,29 @@ const Product = () => {
           sectionId={category.sectionId}
           sectionTitle={category.sectionTitle}
           items={category.items}
+          cartItems={cartItems}
+          addToCart={addToCart}
+          removeFromCart={removeFromCart}
         />
       ))}
+      <h2 className="mt-4 mb-4">Shopping Cart</h2>
+      {cartItems.length === 0 ? (
+        <p>Cart is Empty</p>
+      ) : (
+        <ul className="list-group">
+          {cartItems.map((item) => (
+            <li className="list-group-item" key={item.id}>
+              {item.title}
+              <button
+                className="btn btn-danger float-end"
+                onClick={() => removeFromCart(item.id)}
+              >
+                Remove
+              </button>
+            </li>
+          ))}
+        </ul>
+      )}
     </div>
   );
 };

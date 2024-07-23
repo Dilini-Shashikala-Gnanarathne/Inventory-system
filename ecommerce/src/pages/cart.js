@@ -37,9 +37,28 @@ const Cart = () => {
                   Add to Cart
                 </button>
               )}
+              
+            </div>
+            <div className="card-body">
+              <h5 className="card-title">Product 1</h5>
+              <p className="card-text">$19.99</p>
+              {cartItems.some((item) => item.id === 2) ? (
+                <button
+                  className="btn btn-danger"
+                  onClick={() => removeFromCart(1)}
+                >
+                  Remove from Cart
+                </button>
+              ) : (
+                <button className="btn btn-danger" onClick={() => addToCart(1)}>
+                  Add to Cart
+                </button>
+              )}
+              
             </div>
           </div>
         </div>
+        {/* Add more Products here */}
         <h2 className="mt-4 mb-4">Shpping Cart</h2>
         {cartItems.length === 0 ? (
           <p> Cart is Empty</p>

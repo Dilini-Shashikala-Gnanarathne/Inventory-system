@@ -14,8 +14,9 @@
   }
   
   .col-4 {
-    flex-basis: 25%;
-    padding: 10px;
+    flex-basis: 2%;
+    padding: 0px;
+    width: auto;
     margin-bottom: 50px;
     box-shadow: 0 0 20px 0px rgba(0, 0, 0, 0.1);
     cursor: pointer;
@@ -58,16 +59,16 @@
   }
   
   .Account-page {
-    background: #f3f3f3;
     width: 325px;
     height: 425px;
     position: relative;
     text-align: center;
-    padding: 20px 0;
+    padding-top: 20px; 
     margin: auto;
     box-shadow: 0 0 20px 0px rgb(182, 182, 187);
     overflow: hidden;
     padding-left: 50px;
+    align-items: center;
   }
   
   .title {
@@ -105,7 +106,9 @@
   .nav1 {
     padding-top: 10px;
     padding-bottom: 350px;
-    padding-left: 10%;
+    padding-left:1px;
+
+    width: 1225px;
   }
   
   .nav1 ul {
@@ -131,7 +134,7 @@
   }
   
   .nav1 ul li a:hover {
-    border: 1px solid black;
+    border: 1px solid rgb(213, 19, 19);
     border-radius: 3px;
   }
   
