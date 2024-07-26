@@ -122,7 +122,7 @@ const Category = ({ sectionId, sectionTitle, items, cartItems, addToCart, remove
                   Remove from Cart
                 </button>
               ) : (
-                <button className="btn btn-danger" onClick={() => addToCart(item.id)}>
+                <button className="btn btn-danger" onClick={() => addToCart(item.id,item.title)}>
                   Add to Cart
                 </button>
               )}
@@ -185,6 +185,7 @@ const Product = () => {
           {cartItems.map((item) => (
             <li className="list-group-item" key={item.id}>
               {item.title}
+              {item.price}
               <button
                 className="btn btn-danger float-end"
                 onClick={() => removeFromCart(item.id)}
