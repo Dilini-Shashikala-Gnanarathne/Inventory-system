@@ -113,7 +113,7 @@ const Category = ({ sectionId, sectionTitle, items, cartItems, addToCart, remove
             <h4 className="Acc"><a name={item.id}></a>{item.title}</h4><br />
             <div className="list">
               <img src={item.imgSrc} className="offer-img" alt={item.title} />
-              <br />{item.description}<br />{item.price}
+              <br />{item.description}<br />{item.price}<br/>
               {cartItems.some(cartItem => cartItem.id === item.id) ? (
                 <button
                   className="btn btn-danger"
@@ -151,6 +151,25 @@ const Product = () => {
 
   return (
     <div className="small-container">
+      <h2 className="mt-4 mb-4">Shopping Cart</h2>
+      {cartItems.length === 0 ? (
+        <p>Cart is Empty</p>
+      ) : (
+        <ul className="list-group">
+          {cartItems.map((item) => (
+            <li className="list-group-item" key={item.id}>
+              {item.title}
+              {item.price}
+              <button
+                className="btn btn-danger float-end"
+                onClick={() => removeFromCart(item.id)}
+              >
+                Remove
+              </button>
+            </li>
+          ))}
+        </ul>
+      )}
       <h2 className="title">ALL CATEGORIES</h2>
       <div className="nav1">
         <ul>
@@ -177,25 +196,7 @@ const Product = () => {
           removeFromCart={removeFromCart}
         />
       ))}
-      <h2 className="mt-4 mb-4">Shopping Cart</h2>
-      {cartItems.length === 0 ? (
-        <p>Cart is Empty</p>
-      ) : (
-        <ul className="list-group">
-          {cartItems.map((item) => (
-            <li className="list-group-item" key={item.id}>
-              {item.title}
-              {item.price}
-              <button
-                className="btn btn-danger float-end"
-                onClick={() => removeFromCart(item.id)}
-              >
-                Remove
-              </button>
-            </li>
-          ))}
-        </ul>
-      )}
+      
     </div>
   );
 };
