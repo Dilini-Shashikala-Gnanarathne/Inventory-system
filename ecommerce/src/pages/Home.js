@@ -14,6 +14,7 @@ import seven from "./Pictures/28.jpg";
 import eight from "./Pictures/25.jpg";
 import nine from "./Pictures/27.jpg";
 import ten from "./Pictures/29.jpg";
+import {Link} from 'react-router-dom';
 
 import "./Home.css"
 const Home = () => {
@@ -28,7 +29,7 @@ const Home = () => {
             Success isn't always about greatness. It's about consistency. <br />
             Consistent hard work gains success. Greatness will come.
           </p>
-          <Button href="Catagories.html" variant="primary">
+          <Button variant="primary" as={Link} to="/product">
             Explore Now &#8594;
           </Button>
         </Col>
@@ -59,10 +60,10 @@ const Home = () => {
       <center>Summer Collection New Modern Design</center>
       <Row className="mt-3">
       {[
-          { title: "Women's Clothing", img: one, desc: 'Kurtis Frock', price: 'LKR.5,000/=', link: 'Details.html' },
-          { title: 'Cosmetics', img: two, desc: 'Cosmetics', price: 'LKR.3500/=', link: 'Details.html' },
-          { title: "Women's Watches", img: three, desc: 'Quartz', price: 'LKR.2000/=', link: 'Details.html' },
-          { title: 'Slippers', img: six, desc: 'Sandals', price: 'LKR.1750/=', link: 'Details.html' },
+          { title: "Women's Clothing", img: one, desc: 'Kurtis Frock', price: 'LKR.5,000/='},
+          { title: 'Cosmetics', img: two, desc: 'Cosmetics', price: 'LKR.3500/=' },
+          { title: "Women's Watches", img: three, desc: 'Quartz', price: 'LKR.2000/='},
+          { title: 'Slippers', img: six, desc: 'Sandals', price: 'LKR.1750/=' },
         ].map((product, idx) => (
           <Col md={3} key={idx} className="mb-4">
             <div className="list">
@@ -74,7 +75,7 @@ const Home = () => {
               {product.desc} <br />
               {product.price}
               <br />
-              <Button href={product.link} variant="primary">
+              <Button as={Link} to="/product" variant="primary">
                 Buy Now &#8594;
               </Button>
             </div>
@@ -87,10 +88,10 @@ const Home = () => {
       </h2>
       <Row className="mt-3">
         {[
-          { title: 'Snowglobe', img:seven, desc: 'Purple Snowglobe', price: 'LKR.5,000/=', link: 'Details.html' },
-          { title: 'Cards', img: eight, desc: 'Cards', price: 'LKR.3500/=', link: 'Details.html' },
-          { title: 'Gift Vouchers', img: nine, desc: 'Quartz', price: 'LKR.2000/=', link: 'Details.html' },
-          { title: 'Teddy Bears', img: ten, desc: 'Sandals', price: 'LKR.1750/=', link: 'Details.html' },
+          { title: 'Snowglobe', img:seven, desc: 'Purple Snowglobe', price: 'LKR.5,000/=' },
+          { title: 'Cards', img: eight, desc: 'Cards', price: 'LKR.3500/='},
+          { title: 'Gift Vouchers', img: nine, desc: 'Quartz', price: 'LKR.2000/='},
+          { title: 'Teddy Bears', img: ten, desc: 'Sandals', price: 'LKR.1750/=' },
         ].map((product, idx) => (
           <Col md={3} key={idx} className="mb-4">
             <div className="list">
@@ -102,7 +103,7 @@ const Home = () => {
               {product.desc} <br />
               {product.price}
               <br />
-              <Button href={product.link} variant="primary">
+              <Button as={Link} to="/product" variant="primary">
                 Buy Now &#8594;
               </Button>
             </div>
