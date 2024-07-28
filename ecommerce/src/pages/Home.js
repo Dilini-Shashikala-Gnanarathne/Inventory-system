@@ -65,7 +65,7 @@ const Home = () => {
           { title: "Women's Watches", img: three, desc: 'Quartz', price: 'LKR.2000/='},
           { title: 'Slippers', img: six, desc: 'Sandals', price: 'LKR.1750/=' },
         ].map((product, idx) => (
-          <Col md={3} key={idx} className="mb-4">
+          <Col md={3} key={idx} className="mb-4 ">
             <div className="list">
               <h4>
                 <a name={`w${idx + 1}`}></a>{product.title}
@@ -115,14 +115,14 @@ const Home = () => {
         <h1 className="title">
           <a name="wsection"></a>Some thing you <font color="Blue">can</font> do here
         </h1>
-        <Row className="mt-3">
+        <Row className="mt-3" >
           {[
-            { title: 'Your Orders', desc: 'Track packages Edit or cancel orders' },
+            { title: 'Your Orders', desc: 'Track packages Edit or cancel orders of yours' },
             { title: 'Returns and Refunds', desc: 'Returns or exchange items print return mailing labels' },
             { title: 'Get Product Help', desc: 'Troubleshoot product setup and usage issues' },
             { title: 'Payments and gift cards', desc: 'Add or edit payment methods view reload gift card balance' },
           ].map((service, idx) => (
-            <Col md={3} key={idx} className="mb-4">
+            <Col md={3} key={idx} className="mb-4" style={{ boxShadow: "0 0 20px 0px rgba(0, 0, 0, 0.1)" }}>
               <h3>{service.title}</h3>
               <p>{service.desc}</p>
             </Col>
@@ -131,7 +131,7 @@ const Home = () => {
         <Row className="mt-3">
           {new Array(4).fill({ title: 'Safe Online Shopping', desc: 'Learn how to protect your account Report something suspicious' }).map(
             (service, idx) => (
-              <Col md={3} key={idx} className="mb-4">
+              <Col md={3} key={idx} className="mb-4" style={{ boxShadow: "0 0 40px 20px rgba(0, 0, 0, 0.1)" }}>
                 <h3>{service.title}</h3>
                 <p>{service.desc}</p>
               </Col>
