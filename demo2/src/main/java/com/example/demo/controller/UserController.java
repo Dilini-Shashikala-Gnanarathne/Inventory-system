@@ -1,7 +1,12 @@
 package com.example.demo.controller;
 
 
+import com.example.demo.dto.UserDTO;
+import com.example.demo.service.UserService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @CrossOrigin
@@ -9,12 +14,12 @@ import org.springframework.web.bind.annotation.*;
 
 
 public class UserController {
-    @GetMapping("/getUser")
-    public String getUser(){
-        return "Äll Users Dilini";
+    @Autowired
+    private UserService userService;
+
+    @GetMapping("/getusers")
+    public List<UserDTO> getUser(){
+        return userService.getAllUsers();
     }
-    @PostMapping("/createUser")
-    public String createUser(){
-        return "create";
-    }
+
 }
