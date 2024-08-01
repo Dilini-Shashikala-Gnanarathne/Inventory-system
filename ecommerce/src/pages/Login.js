@@ -21,31 +21,8 @@ export default function Login() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    loging(formData);
   };
 
-  const loging = (data) => {
-    Axios.post('http://localhost:3001/api/login', data)
-      .then((response) => {
-        const { token, email } = response.data;
-        console.log(`Login: ${token}`);
-
-        if (token) {
-          localStorage.setItem('authToken', token);
-          setError(null);
-          navigate('/home');
-        } else {
-          setError('Login failed: no token received');
-        }
-      })
-      .catch((error) => {
-        if (error.response && error.response.status === 400) {
-          setError(error.response.data.error);
-        } else {
-          setError('An unexpected error occurred');
-        }
-      });
-  };
 
   return (
     <div className="Auth-form-container">

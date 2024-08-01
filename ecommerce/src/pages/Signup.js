@@ -36,7 +36,7 @@ function SignupForm() {
   };
 
   const addUser = (data) => {
-    Axios.post('http://localhost:3001/api/createUser', data)
+    Axios.post('http://localhost:8080/api/v1/adduser', data)
       .then(() => {
         resetForm();
         setError(null);
