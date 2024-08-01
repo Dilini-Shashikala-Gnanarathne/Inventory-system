@@ -7,8 +7,6 @@ export default function Footer() {
   return (
     
     <div className="container_footer">
-      {/* Row 1 */}
-
       <div>
       <div className="row">
         <div className="column">
@@ -18,8 +16,6 @@ export default function Footer() {
         <h1 className='footer_text'>Customer Service</h1>
       </div>
      </div>
-
-      {/* Row 2 */}
       <div className="row">
       <div className="column">
         <Button className='footer_button'>Our Story</Button>
@@ -27,9 +23,8 @@ export default function Footer() {
       <div className="column">
         <Button className='footer_button'>Need Help?</Button>
       </div>
-        
+  
       </div>
-    {/* Row3 */}
       <div className="row">
       <div className="column">
         <Button className='footer_button'>Reviews</Button>
@@ -59,9 +54,6 @@ export default function Footer() {
         
         <Button className='button_privacy'>Privacy Policy</Button>
         <Button className='button_privacy'>Terms & Conditions</Button>
-        
-        
-
       </div>
       
     </div>
